@@ -19,15 +19,15 @@ import java.util.Map;
 public interface UrlShorteningService {
 	
 	/**
-	 * 글을 수정한다.
-	 * @param 
+	 * 원 URL을 가져온다.
+	 * @param shortUrl, shortUrlMap
 	 * @return String
 	 */
 	String getOriginUrl(String shortUrl, Map<String, UrlShorteningVO> shortUrlMap);
 	
 	/**
-	 * 글을 수정한다.
-	 * @param 
+	 * 저장 된 URL DATA를 가져온다.
+	 * @param originUrl, originUrlMap, shortUrlMap
 	 * @return UrlShorteningVO
 	 */
 	UrlShorteningVO getUrlShorteningData(String originUrl, Map<String, UrlShorteningVO> originUrlMap, Map<String, UrlShorteningVO> shortUrlMap);
