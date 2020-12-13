@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	data-layout-decorate="~{samples/layout/sampleLayout}">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script>
+
+</script>
+</head>
+<body>
+	<div th:object="${returnData}">
+		원래 URL : <input th:value="*{originUrl}" type="text" id="shortUrl"><br>
+		짧은 URL :<input th:value="*{shortUrl}" type="text" id="shortUrl">
+	</div>
+</body>
+</html>
