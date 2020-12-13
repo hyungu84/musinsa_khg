@@ -1,5 +1,19 @@
 package com.example.demo.service;
 
+/**
+ * @Class Name : UrlShorteningVO.java
+ * @Description : UrlShorteningVO Class
+ * @
+ * @  수정일      수정자              수정내용
+ * @ ---------   ---------   -------------------------------
+ * @ 2020.12.12           최초생성
+ *
+ * @author khg
+ * @since 2020.12.12
+ * @version 1.0
+ * @see
+ *
+ */
 public class UrlShorteningVO {
 	
 	/** 실제 URL */

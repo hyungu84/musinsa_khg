@@ -8,6 +8,21 @@ import org.springframework.stereotype.Service;
 import com.example.demo.service.UrlShorteningService;
 import com.example.demo.service.UrlShorteningVO;
 
+/**
+ * @Class Name : UrlShorteningServiceImpl.java
+ * @Description : UrlShortening Business Implement Class
+ * @
+ * @  수정일      수정자              수정내용
+ * @ ---------   ---------   -------------------------------
+ * @ 2020.12.12           	최초생성
+ *
+ * @author khg
+ * @since 2020. 12.12
+ * @version 1.0
+ * @see
+ *
+ */
+
 @Service
 public class UrlShorteningServiceImpl implements UrlShorteningService {
 	
@@ -34,8 +49,6 @@ public class UrlShorteningServiceImpl implements UrlShorteningService {
 		// ORIGIN_URL_KEY_MAP에 originUrl이 있으면 바로 리턴
 		if(originUrlMap.get(originUrl) != null){
 			
-			System.out.println("동일한 URL : ");
-			
 			UrlShorteningVO resultData = new UrlShorteningVO();
 			resultData.setOriginUrl(originUrl);
 			resultData.setShortUrl(originUrlMap.get(originUrl).getShortUrl());
@@ -60,7 +73,7 @@ public class UrlShorteningServiceImpl implements UrlShorteningService {
 	private String getShortUrl(Map<String, UrlShorteningVO> shortUrlMap) {
 		
 		String shortUrl = RandomStringUtils.randomAlphabetic(8);
-		System.out.println("shortUrl : " + shortUrl);
+//		System.out.println("shortUrl : " + shortUrl);
 
 		// 짧은 URL이 혹시 동일한 경우 처리
 		int loopCnt = 0;
@@ -68,7 +81,7 @@ public class UrlShorteningServiceImpl implements UrlShorteningService {
 			loopCnt++;
 			shortUrl = RandomStringUtils.randomAlphabetic(8);
 			
-			System.out.println("shortUrl : " + shortUrl);
+//			System.out.println("shortUrl : " + shortUrl);
 
 			// 무한loop 방어로직
 			if (loopCnt == 10) {
