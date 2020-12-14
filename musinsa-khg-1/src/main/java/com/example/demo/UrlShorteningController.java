@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,40 +36,39 @@ public class UrlShorteningController {
 	private UrlShorteningService urlShorteningService;
 	
 	private Map<String, UrlShorteningVO> SHORT_URL_KEY_MAP = new HashMap<String, UrlShorteningVO>();
-	// 중복 된 originUrl이 있는지 확인용
-	private Map<String, UrlShorteningVO> ORIGIN_URL_KEY_MAP = new HashMap<String, UrlShorteningVO>();
+	// 중복 된 originalUrl이 있는지 확인용
+	private Map<String, UrlShorteningVO> ORIGINAL_URL_KEY_MAP = new HashMap<String, UrlShorteningVO>();
 	
 	@RequestMapping(value = "/")
-	public String urlShorteningRegisterForm(HttpServletResponse response) throws Exception {
+	public String urlShorteningRegisterForm() {
 		return "urlShorteningRegister";
 	}
 	
 	@RequestMapping(value = "/{shortUrl}")
-	public String moveShorteningUrl(@PathVariable("shortUrl") String shortUrl, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String moveShorteningUrl(@PathVariable("shortUrl") String shortUrl) {
 
 		// 짧은 URL로 등록 된 데이터가 없다면 없는 화면으로
 		if (!SHORT_URL_KEY_MAP.containsKey(shortUrl)) {
 			return "noUrlPage";
 		}
 
-		// 짧은 URL로 인입 시 USE_CNT를 UPDATE
-		// 짧은 URL로 인입 시 원URL 조회 해서 redirect
-		String originUrl = urlShorteningService.getOriginUrl(shortUrl, SHORT_URL_KEY_MAP);
+		// 짧은 URL로 인입 시 USE_CNT를 UPDATE 및 원URL 조회 해서 redirect
+		String originalUrl = urlShorteningService.getOriginalUrl(shortUrl, SHORT_URL_KEY_MAP);
 
-		return "redirect:".concat(originUrl);
+		return "redirect:".concat(originalUrl);
 	}
 	
-	@RequestMapping(value = "/addOriginUrl")
-	public String addOriginUrl(HttpServletRequest request, Model model) throws Exception {
+	@RequestMapping(value = "/addOriginalUrl")
+	public String addOriginalUrl(HttpServletRequest request, Model model) {
 		
-		String originUrl = request.getParameter("originUrl");
+		String originalUrl = request.getParameter("originalUrl");
 		
-		// originUrl http가 없으면 앞에 생성
-		if (!originUrl.contains("http")) {
-			originUrl = "http://".concat(originUrl);
+		// originalUrl http가 없으면 앞에 생성
+		if (!originalUrl.contains("http")) {
+			originalUrl = "http://".concat(originalUrl);
 		}
 
-		UrlShorteningVO resultData = urlShorteningService.getUrlShorteningData(originUrl, ORIGIN_URL_KEY_MAP, SHORT_URL_KEY_MAP);
+		UrlShorteningVO resultData = urlShorteningService.getUrlShorteningData(originalUrl, ORIGINAL_URL_KEY_MAP, SHORT_URL_KEY_MAP);
 		model.addAttribute("returnData", resultData);
 		
 		return "urlShorteningResult";

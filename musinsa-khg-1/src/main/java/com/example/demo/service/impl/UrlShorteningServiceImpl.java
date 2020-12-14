@@ -27,31 +27,31 @@ import com.example.demo.service.UrlShorteningVO;
 public class UrlShorteningServiceImpl implements UrlShorteningService {
 	
 	@Override
-	public String getOriginUrl(String shortUrl, Map<String, UrlShorteningVO> shortUrlMap) {
+	public String getOriginalUrl(String shortUrl, Map<String, UrlShorteningVO> shortUrlMap) {
 		
-		String originUrl = shortUrlMap.get(shortUrl).getOriginUrl();
+		String originalUrl = shortUrlMap.get(shortUrl).getOriginalUrl();
 		long useCnt = shortUrlMap.get(shortUrl).getUseCnt();
 
 		UrlShorteningVO urlShorteningVO = new UrlShorteningVO();
-		urlShorteningVO.setOriginUrl(originUrl);
+		urlShorteningVO.setOriginalUrl(originalUrl);
 		urlShorteningVO.setShortUrl(shortUrl);
 		urlShorteningVO.setUseCnt(++useCnt);
 
 		shortUrlMap.put(shortUrl, urlShorteningVO);
 		
-		return originUrl;
+		return originalUrl;
 		
 	}
 	
 	@Override
-	public UrlShorteningVO getUrlShorteningData(String originUrl, Map<String, UrlShorteningVO> originUrlMap, Map<String, UrlShorteningVO> shortUrlMap) {
+	public UrlShorteningVO getUrlShorteningData(String originalUrl, Map<String, UrlShorteningVO> originalUrlMap, Map<String, UrlShorteningVO> shortUrlMap) {
 		
-		// ORIGIN_URL_KEY_MAP에 originUrl이 있으면 바로 리턴
-		if(originUrlMap.get(originUrl) != null){
+		// ORIGIN_URL_KEY_MAP에 originalUrl이 있으면 바로 리턴
+		if(originalUrlMap.get(originalUrl) != null){
 			
 			UrlShorteningVO resultData = new UrlShorteningVO();
-			resultData.setOriginUrl(originUrl);
-			resultData.setShortUrl(originUrlMap.get(originUrl).getShortUrl());
+			resultData.setOriginalUrl(originalUrl);
+			resultData.setShortUrl(originalUrlMap.get(originalUrl).getShortUrl());
 			
 			return resultData;
 		}
@@ -60,11 +60,11 @@ public class UrlShorteningServiceImpl implements UrlShorteningService {
 		String shortUrl = getShortUrl(shortUrlMap);
 
 		UrlShorteningVO resultData = new UrlShorteningVO();
-		resultData.setOriginUrl(originUrl);
+		resultData.setOriginalUrl(originalUrl);
 		resultData.setShortUrl(shortUrl);
 		
 		shortUrlMap.put(shortUrl,resultData);
-		originUrlMap.put(originUrl,resultData);
+		originalUrlMap.put(originalUrl,resultData);
 		
 		return resultData;
 		

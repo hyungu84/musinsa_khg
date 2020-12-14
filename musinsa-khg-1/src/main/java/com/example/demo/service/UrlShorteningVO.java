@@ -17,7 +17,7 @@ package com.example.demo.service;
 public class UrlShorteningVO {
 	
 	/** 실제 URL */
-	private String originUrl;
+	private String originalUrl;
 	
 	/** 짧은 URL */
 	private String shortUrl;
@@ -25,12 +25,12 @@ public class UrlShorteningVO {
 	/** 사용수 */
 	private long useCnt;
 
-	public String getOriginUrl() {
-		return originUrl;
+	public String getOriginalUrl() {
+		return originalUrl;
 	}
 
-	public void setOriginUrl(String originUrl) {
-		this.originUrl = originUrl;
+	public void setOriginalUrl(String originalUrl) {
+		this.originalUrl = originalUrl;
 	}
 
 	public String getShortUrl() {

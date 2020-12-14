@@ -23,13 +23,13 @@ public interface UrlShorteningService {
 	 * @param shortUrl, shortUrlMap
 	 * @return String
 	 */
-	String getOriginUrl(String shortUrl, Map<String, UrlShorteningVO> shortUrlMap);
+	String getOriginalUrl(String shortUrl, Map<String, UrlShorteningVO> shortUrlMap);
 	
 	/**
 	 * 저장 된 URL DATA를 가져온다.
-	 * @param originUrl, originUrlMap, shortUrlMap
+	 * @param originalUrl, originalUrlMap, shortUrlMap
 	 * @return UrlShorteningVO
 	 */
-	UrlShorteningVO getUrlShorteningData(String originUrl, Map<String, UrlShorteningVO> originUrlMap, Map<String, UrlShorteningVO> shortUrlMap);
+	UrlShorteningVO getUrlShorteningData(String originalUrl, Map<String, UrlShorteningVO> originalUrlMap, Map<String, UrlShorteningVO> shortUrlMap);
 
 }
