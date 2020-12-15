@@ -4,9 +4,7 @@
 
 ### 1. java 설치 확인(설치 되지 않았다면 java 설치)
 	-- java 설치 확인 명령어
-	```
 	$ java -version
-	```
 
 ### 2. maven 설치 확인(설치 되지 않았다면 maven 설치)
 	-- maven 설치 확인 명령어
