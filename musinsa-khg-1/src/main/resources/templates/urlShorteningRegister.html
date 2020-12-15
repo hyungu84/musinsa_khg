@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>URL Shortening Service</title>
 <script>
 	function submitAction() {
         document.frmProduct.submit();
@@ -11,7 +11,7 @@
 </head>
 <body>
 <form action='/addOriginalUrl' method="post" name="frmProduct" id="frmProduct">
-  ORIGIN URL : <input id='originalUrl' name="originalUrl" type='text' style="width: 500px;"/>
+  ORIGIN URL : <input id='originalUrl' name="originalUrl" type='text' style="width: 500px;" placeholder="Please insert URL (ex: https://www.musinsa.com)"/>
   <input onclick="submitAction()" id="submit_value" type="button" name="submit_value" value="저장">
 </form>
 
